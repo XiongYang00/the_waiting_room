@@ -1,13 +1,11 @@
-from src.player.players import Hero
-from src.monsters.A_grunt.gremlins import GruntGoblin
 
-def attack_sequence(incomming_attack_damage:int, Attacker: Hero, Target: GruntGoblin):
+def attack_sequence(incomming_attack_damage:int, attacker_weakened:bool, target_is_vulnerable:bool, Target):
     target_block = Target.block
     # if target has weak applied, halve the attack damage (round up)
-    if Attacker.weak:
+    if attacker_weakened:
         incomming_attack_damage = round(incomming_attack_damage * 0.5)
         
-    if Target.vulnerable:
+    if target_is_vulnerable:
         incomming_attack_damage = round(incomming_attack_damage * 2)
         
     if target_block >= incomming_attack_damage:

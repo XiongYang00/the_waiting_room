@@ -122,14 +122,14 @@ def apply_defense(player_actions: dict, enemy_actions: dict, Ironclad: Hero, Ene
 def apply_attack(player_actions: dict, enemy_actions: dict, Ironclad: Hero, EnemyGoblin: GruntGoblin):     
     for player_action in player_actions:
         if player_action.lower() in offensive_card_actions:
-            attack_sequence(player_actions[player_action], Ironclad, EnemyGoblin)
+            attack_sequence(player_actions[player_action], Ironclad.weak, EnemyGoblin.vulnerable, EnemyGoblin)
             
         elif player_action == 'double-attack':
-            attack_sequence(player_actions[player_action], Ironclad, EnemyGoblin)
+            attack_sequence(player_actions[player_action], Ironclad.weak, EnemyGoblin.vulnerable, EnemyGoblin)
         
     for enemy_action in enemy_actions:
         if enemy_action.lower() in offensive_card_actions:
-            attack_sequence(enemy_actions[enemy_action], Ironclad, EnemyGoblin)
+            attack_sequence(enemy_actions[enemy_action], EnemyGoblin.weak, Ironclad.vulnerable, Ironclad)
 
 
 def apply_special_effects(player_actions: dict, enemy_actions: dict, Ironclad: Hero, EnemyGoblin: GruntGoblin):
