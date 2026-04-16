@@ -57,6 +57,9 @@ def player_turn(Ironclad:Hero, drawn_cards:list[CommonCard], base_deck:HeroDeck)
     while energy > 0:
         _show_hand(list_keys)
         chosen_position = int(input(f'Pick a card: '))
+        if chosen_position-1 not in range(len(list_keys)):
+            print('Invalid card position, please choose a valid card.')
+            continue
         chosen_card = list_keys[chosen_position-1]
         print(chosen_card)
         energy_cost = chosen_card.energy
